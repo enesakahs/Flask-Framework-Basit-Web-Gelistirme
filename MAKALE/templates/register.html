@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+
+<h3>Kayıt Olun</h3>
+<hr>
+
+<form method=post>
+      {{ render_field(form.name,class="form-control") }}
+      {{ render_field(form.username,class="form-control") }}
+      {{ render_field(form.email,class="form-control") }}
+      {{ render_field(form.password,class="form-control",id="password-input") }}
+      {{ render_field(form.confirm,class="form-control",id="confirm-input") }}
+      <dd id="password-match" style="display: none; color: green;">&#10003;</dd>
+    <button type="submit" class="btn btn-info">KAYIT OL</button>
+  </form>
+
+  <script>
+    const passwordInput = document.getElementById("password-input");
+    const confirmInput = document.getElementById("confirm-input");
+    const passwordMatch = document.getElementById("password-match");
+    
+    confirmInput.addEventListener("input", () => {
+      if (confirmInput.value === passwordInput.value) {
+        passwordMatch.style.display = "inline";
+      } else {
+        passwordMatch.style.display = "none";
+      }
+    });
+  </script>
+
+{% endblock %}

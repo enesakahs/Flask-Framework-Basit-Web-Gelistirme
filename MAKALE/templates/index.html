@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h3>ARADA MAKARA ARADA MAKALE</h3>
+    <p>Her Arayan Bulamaz Ama Bulanlar Arayanlardır..</p>
+</div>
+<ul>
+    {% for  article in articles %}
+        <li>Article Id:{{article.id}} - Title:{{article.title}} - Content:{{article.content}}</li>
+    {% endfor %}
+</ul>
+{% endblock %} 
